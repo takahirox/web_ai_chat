@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Web AI chat</title>
+  <meta charset="utf-8">
+  <style>
+    body {
+	  background-color: lightblue;
+	  color: #000;
+      overscroll-behavior: none;
+      font-family: Monospace;
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    select {
+      font-family: Monospace;
+      font-size: 12px;
+    }
+
+    #chatDiv {
+      border: 1px solid black;
+      border-radius: 16px;
+      padding: 8px;
+      width: min(640px, 90%);
+    }
+
+    #chatUl {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      list-style: none;
+      padding: 0;
+    }
+
+    li.chat {
+      border-radius: 8px;
+      margin-bottom: 4px;
+      max-width: 90%;
+      padding: 8px;
+      word-break: break-all;
+    }
+
+    li.aichat {
+      align-self: start;
+      background: white;
+    }
+
+    li.userchat {
+      align-self: end;
+      background: lightgreen;
+    }
+
+    #inputForm {
+      display: flex;
+      flex-direction: row;
+      gap: 2px;
+      width: 100%;
+    }
+
+    #chatTextarea {
+      border-radius: 4px;
+      resize: none;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Web AI chat</h1>
+
+  AI chat with on-device and in-browser inference.<br>
+  <a href="https://github.com/takahirox/web_ai_chat" target="_blank">Source code</a>
+
+  <h2>Models</h2>
+  <a href="https://huggingface.co/Xenova/blenderbot-400M-distill" target="_blank">Xenova/blenderbot-400M-distill</a><br>
+  (ONNX port of <a href="https://huggingface.co/facebook/blenderbot-400M-distill" target="_blank">facebook/blenderbot-400M-distill</a>)
+
+  <h2>Loading status</h2>
+  <span id="progressSpan"></span>
+  <span id="statusSpan">Initializing...</span>
+
+  <h2>Chat</h2>
+  <div id="chatDiv">
+    Type anything you want.
+    <ul id="chatUl">
+    </ul>
+    <form id="inputForm">
+      <textarea id="chatTextarea" disabled></textarea>
+      <button id="sendButton" disabled>Send</button>
+    </form>
+  </div>
+
+  <script type="module">
+    import "./dist/app.bundle.js";
+  </script>
+</body>
+</html>
